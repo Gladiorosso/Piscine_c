@@ -1,4 +1,6 @@
 #include <unistd.h>
+ft_print_comb_write(a, b, c); //include write function
+
 void	ft_print_comb(void)
 {
 	char	a;
@@ -14,10 +16,7 @@ void	ft_print_comb(void)
 		{
 			while (c <= '9')
 			{
-				write(1, &a, 1);
-				write(1, &b, 1);
-				write(1, &c, 1);
-				write(1, ", ", 2);
+				ft_print_comb_write(a, b, c);
 				c++;
 			}
 			b++;

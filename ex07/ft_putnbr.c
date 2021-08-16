@@ -1,34 +1,29 @@
-#include<stdio.h>
 #include<unistd.h>
 
 void	ft_putnbr(int	nb)
 {
 	char	num[12];
-	int			div;
-	int			i;
-	
+	int		div;
+	int		i;
+
 	i = 0;
+	div = 10;
 	if (nb < 0)
 	{
-		num[i] = '-';
+		write(1, "-", 1);
 		nb = -nb;
-		i++;
 	}
-	div = 10000000;
-	while (nb / div == 0){
-		div /= 10;
-	}
-	while (nb / div != 0)
+	while (nb != 0)
 	{
-		num[i] = nb / div + 48;
-		printf("num %s\n", num);
-		nb = nb - (nb / div) * div;
-		printf("nb %d\n", nb);
-		div = div / 10;
-		printf("div %d\n", div);
+		num[i] = nb % div + '0';
+		nb = nb / 10;
 		i++;
-		printf("i %d\n", i);
 	}
-	//num[i] = '\0';
-	printf("num %s\n", num);
+	num[i] = '\0';
+	i--;
+	while (i >= 0)
+	{
+		write(1, &num[i], 1);
+		i--;
+	}
 }
